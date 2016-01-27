@@ -1,0 +1,11 @@
+{
+    "author": "The Team",
+    "email": "theteam@mydomain.com",
+    "repo_name": "my_template",
+    "repo_url": "https://github.com/theteam/{{ cookiecutter.repo_name }}",
+    "doc_url": "https://{{ cookiecutter.repo_name }}.readthedocs.org/",
+    "project_name": "Python Template",
+    "short_description": "Python project template for Cookiecutter",
+    "year": "2016",
+    "version": "0.1.0"
+}

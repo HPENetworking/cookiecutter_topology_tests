@@ -1,0 +1,11 @@
+{
+    "author": "{{ cookiecutter.author }}",
+    "email": "{{ cookiecutter.email }}",
+    "repo_name": "{{ cookiecutter.repo_name }}",
+    "repo_url": "{{ cookiecutter.repo_url }}",
+    "doc_url": "{{ cookiecutter.doc_url }}",
+    "project_name": "{{ cookiecutter.project_name }}",
+    "short_description": "{{ cookiecutter.short_description }}",
+    "year": "{{ cookiecutter.year }}",
+    "version": "{{ cookiecutter.version }}"
+}

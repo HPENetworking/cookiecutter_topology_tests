@@ -1,0 +1,18 @@
+# Coding style
+flake8
+pep8-naming
+
+# Testing Framework
+pytest===2.8.4
+pytest-random
+pytest-xdist
+pytest-timeout
+ipdb
+
+# Topology Platform Engines
+topology_docker>=1.2.0
+# topology_connect>=1.0.0
+
+# Communication Libraries
+-e git+https://github.com/HPENetworking/topology_lib_ping.git@master#egg=topology_lib_ping
+-e git+https://github.com/HPENetworking/topology_lib_ip.git@master#egg=topology_lib_ip
