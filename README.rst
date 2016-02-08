@@ -42,16 +42,23 @@ Generate a new Python project using this template:
 ::
 
    pip install cookiecutter
-   cookiecutter git@github.com:HPENetworking/cookiecutter_python.git
+   cookiecutter git@github.com:HPENetworking/cookiecutter_topology_tests.git
 
 
-Improvements
-============
+Once that is done, initialize a git repository in the cookiecutter-generated
+directory:
 
-- Setup Travis CI and Tox integration.
-- Setup Coveralls and Tox integration.
-- Integrate documentation with http://shields.io/
-- Add support for changelog generation using gitchangelog
+::
+
+   git init
+   git add .
+   git commit -m "Adding files."
+
+After initializing the repository, you can run the tests:
+
+::
+
+   tox
 
 
 .. _Tox: https://testrun.org/tox/
