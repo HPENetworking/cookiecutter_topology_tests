@@ -1,11 +1,11 @@
 {
-    "author": "The Team",
-    "email": "theteam@mydomain.com",
-    "repo_name": "my_template",
-    "repo_url": "https://github.com/theteam/{{ cookiecutter.repo_name }}",
-    "doc_url": "https://{{ cookiecutter.repo_name }}.readthedocs.org/",
-    "project_name": "Python Template",
-    "short_description": "Python project template for Cookiecutter",
+    "author": "Hewlett Packard Enterprise Development LP",
+    "email": "hpe-networking@lists.hp.com",
+    "repo_name": "your_tests_repo_name",
+    "repo_url": "https://github.com/HPENetworking/{{ cookiecutter.repo_name }}",
+    "doc_url": "{{ cookiecutter.repo_url }}/tree/master/doc",
+    "project_name": "Your testing project name",
+    "short_description": "A short description of your testing project goes here.",
     "year": "2016",
     "version": "0.1.0"
 }

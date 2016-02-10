@@ -1,0 +1,13 @@
+[
+    {
+        "files": ["./test/*"],
+        "modifiers": [
+            {
+                "nodes": ["ops1"],
+                "attributes": {
+                    "image": "topology/ops"
+                }
+            }
+        ]
+    }
+]

@@ -4,6 +4,7 @@ __pycache__
 # Sphinx
 doc/_build/*
 doc/{{ cookiecutter.repo_name }}/*
+doc/autoapi/*
 
 # Tox
 .tox/*
