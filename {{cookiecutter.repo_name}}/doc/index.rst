@@ -208,7 +208,7 @@ This is an injection file example:
 
       [
           {
-              "files": ["/path/to/directory/*", "/test/test_case.py"],
+              "files": ["/path/to/directory/*", "test_suite.py"],
               "modifiers": [
                   {
                       "nodes": ["sw1", "type=host", "sw3"],
@@ -226,7 +226,7 @@ This is an injection file example:
               ]
           },
           {
-              "files": ["/path/to/directory/test_case.py"],
+              "files": ["/path/to/directory/test_suite.py"],
               "modifiers": [
                   {
                       "nodes": ["sw1"],
@@ -245,6 +245,8 @@ Files
 .....
 
 The items in the *files* list are paths for  *test suites* or *topology* files.
+These paths can be absolute or relative to the places where pytest is set to
+find test cases.
 Both of them are expected to have a definition of a test topology in a
 constant named TOPOLOGY as shown :ref:`here<topology-definition>`.
 
