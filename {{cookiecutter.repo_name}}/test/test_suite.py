@@ -116,7 +116,7 @@ ops1:port3 -- hs2:port2
 # ...
 
 
-def test_vlan(topology, step):
+def test_case(topology, step):
     """
     The documentation for the test case goes here. The following lines are an
     example:

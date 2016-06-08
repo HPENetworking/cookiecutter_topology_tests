@@ -1,6 +1,6 @@
 [
     {
-        "files": ["./test/*"],
+        "files": ["test_suite.py"],
         "modifiers": [
             {
                 "nodes": ["ops1"],
