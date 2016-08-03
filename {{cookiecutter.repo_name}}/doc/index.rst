@@ -26,12 +26,98 @@ Getting started
 Setup Development Environment
 +++++++++++++++++++++++++++++
 
-To install the Topology Modular Framework with its Topology Docker platform
-engine and a few Communication libraries:
+#. Install ``pip`` and ``tox``:
 
    ::
 
-      ./installer.sh
+      sudo apt-get install python-pip
+      sudo pip install tox
+
+#. Configure git pre-commit hook:
+
+   ::
+
+      sudo pip install flake8 pep8-naming
+      flake8 --install-hook
+      git config flake8.strict true
+
+#. Install Graphviz for topology auto-plotting:
+
+   ::
+
+      sudo apt-get install graphviz
+
+#. Configure your environment to run without root:
+
+   ::
+
+      sudo groupadd topology
+      sudo usermod -a -G topology $USER
+      sudo sh -c 'echo "%topology ALL = (root) NOPASSWD: /sbin/ip, /bin/mkdir -p /var/run/netns, /bin/rm /var/run/netns/*, /bin/ln -s /proc/*/ns/net /var/run/netns/*" > /etc/sudoers.d/topology'
+
+   Now logout and login again. Confirm your you're in the ``topology`` group
+   with:
+
+   ::
+
+      $ id
+      ...,1001(topology)
+
+#. Download, install and setup Docker:
+
+   #. Install Docker:
+
+      ::
+
+         wget -qO- https://get.docker.com/ | sh
+
+   #. Add proxy settings:
+
+      ::
+
+         echo 'export http_proxy="http://web-proxy.americas.hpqcorp.net:8080/"' | sudo tee -a /etc/default/docker
+         echo 'export https_proxy="https://web-proxy.americas.hpqcorp.net:8080/"' | sudo tee -a /etc/default/docker
+
+   #. Add DNS settings:
+
+      Docker cannot use the local DNS resolver [#nodns]_.
+      So we need to setup to use our network DNS:
+
+      ::
+
+         DNS=$(nm-tool | grep DNS | python -c "import sys; print('DOCKER_OPTS=\"--dns {}\"'.format(' --dns '.join([l.split()[1] for l in sys.stdin])))")
+         echo $DNS | sudo tee -a /etc/default/docker
+
+   #. Restart Docker daemon:
+
+      ::
+
+         sudo service docker restart
+
+   #. Add your user to the ``docker`` group:
+
+      ::
+
+         sudo usermod -a -G docker $USER
+
+      Remember to logout and login for this change to take effect.
+
+#. (Optional) Download a different image for OpenSwitch:
+
+   By default, the framework will autopull an OpenSwitch image from:
+
+      https://hub.docker.com/r/topology/ops/
+
+   If you require a different version or the latest, download it from:
+
+      https://archive.openswitch.net/artifacts/periodic/
+
+   For example:
+
+   ::
+
+      wget https://archive.openswitch.net/artifacts/periodic/0.1.0+2015100106/genericx86-64/openswitch-disk-image-genericx86-64-0.1.0+2015100106.tar.gz
+      cat openswitch-disk-image-genericx86-64-0.1.0+2015100106.tar.gz | docker import - topology/ops:latest
 
 Writing test cases
 ++++++++++++++++++
@@ -495,3 +581,6 @@ License
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
+
+
+.. [#nodns] See https://robinwinslow.co.uk/2014/08/27/fix-docker-networking/
